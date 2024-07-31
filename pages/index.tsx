@@ -3,11 +3,12 @@ import { Inter } from "next/font/google";
 import Blog from '../blogs/denver/article.mdx'
 import Link from "next/link";
 import TRIPS from "@/trips";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  
+
   return (
     <>
       <Head>
@@ -17,9 +18,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <div className="trip-grid">
-        {Object.keys(TRIPS).map(key =>{
+        {Object.keys(TRIPS).map(key => {
           const trip = TRIPS[key];
-          return <TripButton name={trip.name} img={trip.bannerImage} href={`/trips/${key}`}/>
+          return <TripButton name={trip.name} img={trip.bannerImage} href={`/trips/${key}`} />
         })
         }
       </div>
@@ -34,14 +35,26 @@ type TripButtonProps = {
 }
 
 function TripButton(props: TripButtonProps) {
-  return <Link href={props.href} style={{textDecorationLine:'none'}}>
-  <div style={{background:"black", color:'white', borderRadius:8, overflow:'hidden'}}>
-     <div style={{height: 300, background: `url("${props.img}")`, backgroundPosition: 'center', backgroundSize: 'cover'}}>
-  </div>
-    <div style={{padding:24, display:'flex', justifyContent:'center'}}>
-      {props.name}
+
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  }
+
+  return <Link onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} href={props.href} style={{ textDecorationLine: 'none' }}>
+    <div style={{ background: "black", color: 'white', borderRadius: 8, overflow: 'hidden', }}>
+      <div style={{ height: 300, background: `url("${props.img}")`, backgroundPosition: 'center', backgroundSize: 'cover', display:'flex', alignItems:'center'  }}>
+        <div style={{ width:'100%', height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: isHovering ? 32 : 24, transition: 'font-size 0.5s', textShadow: "#000 1px 0 10px" }}>
+          {props.name}
+        </div>
+      </div>
+
     </div>
-  </div>
   </Link>
-  
+
 }
