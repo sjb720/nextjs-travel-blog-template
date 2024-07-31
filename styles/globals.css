@@ -48,3 +48,34 @@ button {
 button:hover {
   background-color: var(--primary-light)
 }
+
+@media only screen and (max-width: 2500px) {
+  .trip-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  }
+}
+
+
+@media only screen and (max-width: 1600px) {
+  .trip-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .trip-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .trip-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.trip-grid {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: grid;
+  gap: 24px;
+}

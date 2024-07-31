@@ -16,7 +16,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{display:'grid', gridTemplateColumns: '1fr 1fr 1fr', gap:24}}>
+      <div className="trip-grid">
         {Object.keys(TRIPS).map(key =>{
           const trip = TRIPS[key];
           return <TripButton name={trip.name} img={trip.bannerImage} href={`/trips/${key}`}/>
