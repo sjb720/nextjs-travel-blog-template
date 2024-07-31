@@ -14,7 +14,7 @@ export default function Home() {
         <title>Travel Blog</title>
         <meta name="description" content="Who Asked? Travel blog!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <div className="trip-grid">
         {Object.keys(TRIPS).map(key =>{
